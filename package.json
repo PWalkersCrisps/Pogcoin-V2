@@ -1,0 +1,34 @@
+{
+  "name": "pogcoin",
+  "version": "2.0.0",
+  "description": "This bot will allow the users to recive passive income for chatting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PWalkersCrisps/RoyCoin.git"
+  },
+  "author": "PWalkersCrisps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PWalkersCrisps/RoyCoin/issues"
+  },
+  "homepage": "https://github.com/PWalkersCrisps/RoyCoin#readme",
+  "engines": {
+    "node": "^16.9.1"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.9.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.25.2",
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0"
+  }
+}
