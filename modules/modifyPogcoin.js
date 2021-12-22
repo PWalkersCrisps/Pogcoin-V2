@@ -14,6 +14,18 @@ module.exports = {
                 },
             },
         );
+        if (modifyStats) {
+            await statsModel.findOneAndUpdate(
+                {
+                    userID: userID,
+                },
+                {
+                    $inc: {
+                        totalCoinsEarnt: pogcoinAddAmount,
+                    },
+                },
+            );
+        }
     },
     removePogcoin : async function(userID, pogcoinRemoveAmount, modifyStats) {
         await profileModel.findOneAndUpdate(
@@ -33,10 +45,39 @@ module.exports = {
                 },
                 {
                     $inc: {
-                        coins: -pogcoinRemoveAmount,
+                        totalCoinsEarnt: -pogcoinRemoveAmount,
                     },
                 },
             );
         }
+    },
+    resetPogcoin : async function(userID) {
+        await profileModel.findOneAndUpdate(
+            {
+                userID: userID,
+            },
+            {
+                $set: {
+                    coins: 1,
+                },
+            },
+        ).then(async () => {
+            await statsModel.findOneAndUpdate(
+                {
+                    userID: userID,
+                },
+                {
+                    $set: {
+                        totalCoinsEarnt: 1,
+                        coinsDonated: 0,
+                        coinsReceived: 0,
+                        netGamble: 0,
+                        robSuccess: 0,
+                        robFails: 0,
+                        timesRobbed: 0,
+                    },
+                },
+            );
+        });
     },
 };
