@@ -1,6 +1,6 @@
-const { randomInsult } = require('../../arrays/randomResponses.js');
+const { randomInsult } = require('../arrays/randomResponses.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const modifyPogcoin = require('../../modules/modifyPogcoin.js');
+const modifyPogcoin = require('../modules/modifyPogcoin.js');
 
 module.exports = {
     name: 'slots',

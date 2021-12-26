@@ -1,6 +1,6 @@
 const talkedRecently = new Set();
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const random = require('../../modules/random.js');
+const random = require('../modules/random.js');
 module.exports = {
     name: 'himari',
     description: 'uwu',

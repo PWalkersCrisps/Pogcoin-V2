@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { Permissions } = require('discord.js');
-const modifyPogcoin = require('../../modules/modifyPogcoin');
-const profileCreate = require('../../modules/profileCreate.js');
+const modifyPogcoin = require('../modules/modifyPogcoin');
+const profileCreate = require('../modules/profileCreate.js');
 module.exports = {
     name: 'create',
     data: new SlashCommandBuilder()
