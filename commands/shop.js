@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const profileModel = require('../models/profileSchema.js');
-const items = require('../arrays/shopItems.js');
+const profileModel = require('../../models/profileSchema.js');
+const items = require('../../arrays/shopItems.js');
 
 module.exports = {
     name: 'shop',

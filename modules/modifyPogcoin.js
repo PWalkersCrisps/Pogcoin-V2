@@ -80,4 +80,29 @@ module.exports = {
             );
         });
     },
+    gamblePogcoin : async function(userID, pogCoinBet, multiplyer) {
+        await profileModel.findOneAndUpdate(
+            {
+                userID: userID,
+            },
+            {
+                $inc: {
+                    coins: pogCoinBet * multiplyer,
+                },
+            },
+        )
+        .then(async () => {
+            await statsModel.findOneAndUpdate(
+                {
+                    userID: userID,
+                },
+                {
+                    $inc: {
+                        totalCoinsEarnt: pogCoinBet * multiplyer,
+                        netGamble: pogCoinBet * multiplyer,
+                    },
+                },
+            );
+        });
+    },
 };

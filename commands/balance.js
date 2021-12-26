@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const profileModel = require('../models/profileSchema.js');
+const profileModel = require('../../models/profileSchema.js');
 
 module.exports = {
     name: 'balance',

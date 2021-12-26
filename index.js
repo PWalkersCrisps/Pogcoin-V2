@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const fs = require('fs');
 const mongoose = require('mongoose');
+const path = require('path');
 const profileModel = require('./models/profileSchema.js');
 const createProfile = require('./modules/profileCreate.js');
 
