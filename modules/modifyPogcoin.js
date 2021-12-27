@@ -90,8 +90,7 @@ module.exports = {
                     coins: pogCoinBet * multiplyer,
                 },
             },
-        )
-        .then(async () => {
+        ).then(async () => {
             await statsModel.findOneAndUpdate(
                 {
                     userID: userID,

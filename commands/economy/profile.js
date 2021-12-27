@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const cooldownModel = require('../models/cooldownSchema.js');
-const profileModel = require('../models/profileSchema.js');
-const statsModel = require('../models/statsSchema.js');
+const cooldownModel = require('../../models/cooldownSchema.js');
+const profileModel = require('../../models/profileSchema.js');
+const statsModel = require('../../models/statsSchema.js');
 
 module.exports = {
     name: 'ping',

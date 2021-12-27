@@ -55,24 +55,25 @@ module.exports = [
             .setName('list')
             .setDescription('See what items are in the shop')),
 
-    new SlashCommandBuilder().setName('profile')
+    new SlashCommandBuilder()
+    .setName('profile')
     .setDescription('Replies with yours or someone elses profile')
     .addUserOption(option => option.setName('target').setDescription('Select a user')),
 
-    new SlashCommandBuilder().setName('himari')
-    .setDescription('Why?????'),
-
-    new SlashCommandBuilder().setName('scp')
-    .setDescription('what do he do tho???'),
-
-    new SlashCommandBuilder().setName('slots')
+    new SlashCommandBuilder()
+    .setName('slots')
     .setDescription('Gamble all of your life savings away')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
 
-    new SlashCommandBuilder().setName('ltgcheck')
+    new SlashCommandBuilder()
+    .setName('ltgcheck')
     .setDescription('Get a quick check up'),
 
-    new SlashCommandBuilder().setName('nya')
+    new SlashCommandBuilder()
+    .setName('nya')
     .setDescription('UwU heheheha'),
 
+    new SlashCommandBuilder()
+    .setName('help')
+    .setDescription('Helps you with shit you didnt know'),
 ];

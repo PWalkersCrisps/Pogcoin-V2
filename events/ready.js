@@ -1,4 +1,4 @@
-const { CLIENT_ID, GUILD_ID, TESTING_GUILD_ID } = require('../arrays/config.json');
+const { CLIENT_ID, GUILD_ID, TESTING_CLIENT_ID, TESTING_GUILD_ID } = require('../arrays/config.json');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
@@ -22,14 +22,17 @@ module.exports = {
                 type: activityType[1],
             });
 
+            let discordToken = process.env.DISCORD_TOKEN;
+            if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
+
             const rest = new REST({
                 version: '9',
-            }).setToken(process.env.DISCORD_TOKEN);
+            }).setToken(discordToken);
 
             console.log(`${ currentDate } Started refreshing application (/) commands.`);
 
             switch (process.env.CURRENT_STATE) {
-                default:
+                case 'production':
                     await rest.put(
                         Routes.applicationGuildCommands(CLIENT_ID),
                         { body: commands },
@@ -43,7 +46,7 @@ module.exports = {
                     break;
                 case 'testing':
                     await rest.put(
-                        Routes.applicationGuildCommands(CLIENT_ID, TESTING_GUILD_ID),
+                        Routes.applicationGuildCommands(TESTING_CLIENT_ID, TESTING_GUILD_ID),
                         { body: commands },
                     );
                     break;

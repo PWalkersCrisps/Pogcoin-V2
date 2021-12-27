@@ -6,6 +6,6 @@ module.exports = {
     .setDescription('Lose ALL of your money!')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
-        // sex!
+        // Sex!
     },
 };

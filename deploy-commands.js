@@ -14,7 +14,10 @@ for (const file of commandFiles) {
 	commands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+let discordToken = process.env.DISCORD_TOKEN;
+if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
+
+const rest = new REST({ version: '9' }).setToken(discordToken);
 
 rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))

@@ -18,4 +18,11 @@ const randomInsults = [
     'I bet you cant even complete the tutorial in cuphead',
 ];
 
+const randomNickname = [
+    { weight: 10, nickname: 'I love gloppy' },
+    { weight: 10, nickname: 'I love paul walker crips' },
+    { weight: 5, nickname: 'Staff furry chat is not real' },
+    { weight: 1, nickname: 'I LOVE discord.gg/PBztGQQeMX' },
+];
+
 module.exports = { randomInsults };

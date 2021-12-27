@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const profileCreate = require('../modules/profileCreate.js');
+const profileCreate = require('../../modules/profileCreate.js');
 module.exports = {
     name: 'create',
     data: new SlashCommandBuilder()
