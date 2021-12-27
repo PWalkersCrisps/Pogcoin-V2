@@ -24,7 +24,8 @@ module.exports = {
                 { name: 'Rob Stats', value: `Successful Robberies: ${statsData.robSuccess}\nFailed Robberies: ${statsData.robFails}\nTimes Robbed: ${statsData.timesRobbed}` },
             )
             .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }))
-            .setTitle(interaction.user.displayName);
+            .setTitle(interaction.user.displayName)
+            .setTimestamp();
         }
         else {
             const statsDataPinged = await statsModel.findOne({ userID: userPinged.id }); // Attempts to look for a user in the DB with the user's id
@@ -35,7 +36,8 @@ module.exports = {
                 { name: 'Rob Stats', value: `Successful Robberies: ${statsDataPinged.robSuccess}\nFailed Robberies: ${statsDataPinged.robFails}\nTimes Robbed: ${statsDataPinged.timesRobbed}` },
             )
             .setThumbnail(userPinged.displayAvatarURL({ dynamic: true, size: 2048, format: 'png' }))
-            .setTitle(`${userPinged.displayName}`);
+            .setTitle(`${userPinged.displayName}`)
+            .setTimestamp();
 
         }
 

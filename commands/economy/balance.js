@@ -11,17 +11,18 @@ module.exports = {
 
         const userMentioned = interaction.options.getMember('target'); // Gets the member mentioned in the slash commands
 
-        const embed = new MessageEmbed() // Create a new message embed
-        .setFooter('Steam Balance Replacement?');
+        const balanceEmbed = new MessageEmbed() // Create a new message embed
+        .setFooter('Steam Balance Replacement?')
+        .setTimestamp();
 
         if (!userMentioned) { // If there was no one mentioned then it gets the profile data of the user who executed the command
-            embed.setFields({ name: 'Poggers Bank', value: `You have ${profileData.coins} pogcoins` }); // This adds data to the embed that was created earlier
+            balanceEmbed.setFields({ name: 'Poggers Bank', value: `You have ${profileData.coins} pogcoins` }); // This adds data to the embed that was created earlier
         }
         else {
             const profileDataMentioned = await profileModel.findOne({ userID: userMentioned.id }); // Gets the data of the user that was mentioned
-            embed.setFields({ name: 'Poggers Bank', value: `<@${userMentioned.id}> has ${profileDataMentioned.coins} pogcoins` }); // This adds data to the embed that was created earlier
+            balanceEmbed.setFields({ name: 'Poggers Bank', value: `<@${userMentioned.id}> has ${profileDataMentioned.coins} pogcoins` }); // This adds data to the embed that was created earlier
         }
 
-        interaction.reply({ embeds: [embed] });
+        interaction.reply({ embeds: [balanceEmbed] });
     },
 };
