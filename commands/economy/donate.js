@@ -17,6 +17,25 @@ module.exports = {
         const amount = interaction.options.getInteger('amount'); // Gets the member mentioned in the slash commands
 
         modifyPogcoin.addPogcoin(userMentioned.id, amount, true);
+        modifyPogcoin.removePogcoin(interaction.user.id, amount, false);
+
+        await statsModel.findOneAndUpdate(
+            { userID: interaction.user.id },
+            {
+                $inc: {
+                    coinsDonated: amount,
+                },
+            },
+        ).then(async () => {
+            await statsModel.findOneAndUpdate(
+                { userID: userMentioned.id },
+                {
+                    $inc: {
+                        coinsReceived: amount,
+                    },
+                },
+            );
+        });
 
         const donateEmbed = new MessageEmbed() // Create a new message embed
         .setFooter('Charity Replacement?')

@@ -38,13 +38,13 @@ module.exports = {
                         { body: commands },
                     );
                     break;
-                case 'development':
+                case 'testing':
                     await rest.put(
                         Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
                         { body: commands },
                     );
                     break;
-                case 'testing':
+                case 'development':
                     await rest.put(
                         Routes.applicationGuildCommands(TESTING_CLIENT_ID, TESTING_GUILD_ID),
                         { body: commands },

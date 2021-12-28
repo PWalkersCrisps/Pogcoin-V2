@@ -5,9 +5,7 @@ const statsModel = require('../models/statsSchema.js');
 module.exports = {
     addPogcoin : async function(userID, pogcoinAddAmount, modifyStats) {
         await profileModel.findOneAndUpdate(
-            {
-                userID: userID,
-            },
+            { userID: userID },
             {
                 $inc: {
                     coins: pogcoinAddAmount,
@@ -16,9 +14,7 @@ module.exports = {
         );
         if (modifyStats) {
             await statsModel.findOneAndUpdate(
-                {
-                    userID: userID,
-                },
+                { userID: userID },
                 {
                     $inc: {
                         totalCoinsEarnt: pogcoinAddAmount,
@@ -29,9 +25,7 @@ module.exports = {
     },
     removePogcoin : async function(userID, pogcoinRemoveAmount, modifyStats) {
         await profileModel.findOneAndUpdate(
-            {
-                userID: userID,
-            },
+            { userID: userID },
             {
                 $inc: {
                     coins: -pogcoinRemoveAmount,
@@ -40,9 +34,7 @@ module.exports = {
         );
         if (modifyStats) {
             await statsModel.findOneAndUpdate(
-                {
-                    userID: userID,
-                },
+                { userID: userID },
                 {
                     $inc: {
                         totalCoinsEarnt: -pogcoinRemoveAmount,
@@ -53,9 +45,7 @@ module.exports = {
     },
     resetPogcoin : async function(userID) {
         await profileModel.findOneAndUpdate(
-            {
-                userID: userID,
-            },
+            { userID: userID },
             {
                 $set: {
                     coins: 1,
@@ -63,9 +53,7 @@ module.exports = {
             },
         ).then(async () => {
             await statsModel.findOneAndUpdate(
-                {
-                    userID: userID,
-                },
+                { userID: userID },
                 {
                     $set: {
                         totalCoinsEarnt: 1,
@@ -82,9 +70,7 @@ module.exports = {
     },
     gamblePogcoin : async function(userID, pogCoinBet, multiplyer) {
         await profileModel.findOneAndUpdate(
-            {
-                userID: userID,
-            },
+            { userID: userID },
             {
                 $inc: {
                     coins: pogCoinBet * multiplyer,
@@ -92,9 +78,7 @@ module.exports = {
             },
         ).then(async () => {
             await statsModel.findOneAndUpdate(
-                {
-                    userID: userID,
-                },
+                { userID: userID },
                 {
                     $inc: {
                         totalCoinsEarnt: pogCoinBet * multiplyer,
