@@ -12,7 +12,7 @@ require('dotenv').config();
 
 /* Login */
 let discordToken = process.env.DISCORD_TOKEN;
-if (!(process.env.CURRENT_STATE == 'production')) {
+if (process.env.CURRENT_STATE == 'development') {
     discordToken = process.env.TESTING_DISCORD_TOKEN;
 }
 client.login(discordToken);
