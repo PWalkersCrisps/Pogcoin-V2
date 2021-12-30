@@ -22,8 +22,8 @@ module.exports = {
                 type: activityType[1],
             });
 
-            let discordToken = process.env.DISCORD_TOKEN;
-            if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
+            const discordToken = process.env.DISCORD_TOKEN;
+            // if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
 
             const rest = new REST({
                 version: '9',
