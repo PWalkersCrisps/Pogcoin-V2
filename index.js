@@ -85,8 +85,5 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 /* Login */
-let discordToken = process.env.DISCORD_TOKEN;
-if (!(process.env.CURRENT_STATE == ('production' || 'testing'))) {
-    discordToken = process.env.TESTING_DISCORD_TOKEN;
-}
+const discordToken = process.env.DISCORD_TOKEN;
 client.login(discordToken);
