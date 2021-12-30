@@ -31,6 +31,12 @@ module.exports = {
 
             console.log(`${ currentDate } Started refreshing application (/) commands.`);
 
+            await rest.put(
+                Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
+                { body: commands },
+            );
+
+            /*
             switch (process.env.CURRENT_STATE) {
                 case 'production':
                     await rest.put(
@@ -51,7 +57,7 @@ module.exports = {
                     );
                     break;
             }
-
+            */
             console.log(`${ currentDate } Successfully reloaded application (/) commands.`);
         }
         catch (error) {
