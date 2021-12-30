@@ -14,9 +14,9 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const { currentDate } = require('./modules/globalVariables');
 const profileModel = require('./models/profileSchema.js');
 const createProfile = require('./modules/profileCreate.js');
+const { currentDate } = require('./modules/globalVariables');
 
 /* Command/Event Handlers */
 client.commands = new Collection();
