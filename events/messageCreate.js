@@ -27,7 +27,7 @@ module.exports = {
                 profileCreate.createUserProfile(message.author.id, 4);
             }
 
-            if (Math.random() < 0.50 && !coinCooldown.has(message.author.id)) {
+            if (Math.random() < 0.02 && !coinCooldown.has(message.author.id)) {
                 addPogcoin(message.author.id, 1, true); // Adds 1 pogcoin to the user while also changing their stats
                 let genderRole;
                 if (message.member.roles.cache.some(role => role.name === 'He/Him')) { // checks if the auther has the he/him role
