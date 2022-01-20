@@ -1,9 +1,9 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { Permissions } = require('discord.js');
+const userPerms = require('../../arrays/userPerms.js');
 const modifyPogcoin = require('../../modules/modifyPogcoin');
-const profileCreate = require('../../modules/profileCreate.js');
 module.exports = {
-    name: 'create',
+    name: 'modify',
     data: new SlashCommandBuilder()
     .setName('modify')
     .setDescription('Creates something i guess')
@@ -26,8 +26,9 @@ module.exports = {
             .setName('reset')
             .setDescription('reset a user\'s coins as well as their stats')
             .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
+
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
-        if (!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) || !interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
+        if (!userPerms.includes(interaction.user.id) || !interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
         const userMentioned = interaction.options.getMember('target');
         const amount = interaction.options.getInteger('int');
         const bool = interaction.options.getBoolean('choice');

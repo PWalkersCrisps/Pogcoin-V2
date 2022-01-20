@@ -11,6 +11,12 @@ module.exports = [
     .addUserOption(option => option.setName('target').setDescription('Select a user')),
 
     new SlashCommandBuilder()
+    .setName('donate')
+    .setDescription('Give someone your hard earnt money')
+    .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to donate?').setRequired(true)),
+
+    new SlashCommandBuilder()
     .setName('create')
     .setDescription('Creates something i guess')
     .addSubcommand(subcommand =>
@@ -19,14 +25,14 @@ module.exports = [
 			.setDescription('Create a user profile in case of debugging')
 			.addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
 
-    new SlashCommandBuilder()
+new SlashCommandBuilder()
     .setName('modify')
     .setDescription('Creates something i guess')
     .addSubcommand(subcommand =>
-        subcommand
-            .setName('give')
-            .setDescription('Give a user some coins')
-            .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
+		subcommand
+			.setName('give')
+			.setDescription('Give a user some coins')
+			.addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
             .addIntegerOption(option => option.setName('int').setDescription('Enter an integer').setRequired(true))
             .addBooleanOption(option => option.setName('choice').setDescription('Do you want this to modify their profile stats?').setRequired(true)))
     .addSubcommand(subcommand =>
@@ -63,7 +69,7 @@ module.exports = [
     new SlashCommandBuilder()
     .setName('slots')
     .setDescription('Gamble all of your life savings away')
-    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?').setRequired(true)),
 
     new SlashCommandBuilder()
     .setName('ltgcheck')
@@ -76,4 +82,8 @@ module.exports = [
     new SlashCommandBuilder()
     .setName('help')
     .setDescription('Helps you with shit you didnt know'),
+
+    new SlashCommandBuilder().setName('gamble')
+    .setDescription('Lose ALL of your money!')
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?').setRequired(true)),
 ];

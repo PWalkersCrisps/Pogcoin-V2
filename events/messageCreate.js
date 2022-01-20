@@ -17,27 +17,21 @@ module.exports = {
             const profileData = await profileModel.findOne({ userID: message.author.id }); // If they somehow didnt get a profile created when they joined, this here will create them a new profile
             const cooldownData = await cooldownModel.findOne({ userID: message.author.id }); // If they somehow didnt get a profile created when they joined, this here will create them a new profile
             const statsData = await statsModel.findOne({ userID: message.author.id }); // If they somehow didnt get a profile created when they joined, this here will create them a new profile
-            if (!cooldownData) {
-                profileCreate.createUserProfile(message.author.id, 2);
-            }
-            if (!profileData) {
-                profileCreate.createUserProfile(message.author.id, 3);
-            }
-            if (!statsData) {
-                profileCreate.createUserProfile(message.author.id, 4);
-            }
+            if (!cooldownData) { profileCreate.createUserProfile(message.author.id, 2); }
+            if (!profileData) { profileCreate.createUserProfile(message.author.id, 3); }
+            if (!statsData) { profileCreate.createUserProfile(message.author.id, 4); }
 
-            if (Math.random() < 0.50 && !coinCooldown.has(message.author.id)) {
+            if (Math.random() < 0.02 && !coinCooldown.has(message.author.id)) {
                 addPogcoin(message.author.id, 1, true); // Adds 1 pogcoin to the user while also changing their stats
                 let genderRole;
                 if (message.member.roles.cache.some(role => role.name === 'He/Him')) { // checks if the auther has the he/him role
-                    genderRole = 'boy';
+                    genderRole = 'king';
                 }
                 else if (message.member.roles.cache.some(role => role.name === 'She/Her')) { // checks if the auther has the she/her role
-                    genderRole = 'girl';
+                    genderRole = 'queen';
                 }
                 else { // If the user has the they/them or dont have a gender role, it will always default to this
-                    genderRole = 'child';
+                    genderRole = 'royalty';
                 }
 
                 const pogcoinEarnt = new MessageEmbed()
@@ -47,10 +41,15 @@ module.exports = {
                 .setTimestamp()
                 .setFooter('This is mininum wage noob');
 
-                message.author.send({ embeds: [pogcoinEarnt] });
+                try {
+                    message.author.send({ embeds: [pogcoinEarnt] });
+                }
+                catch (error) {
+                    message.reply('You got a pogcoin, you have your DMs closed or you have blocked me so i can\'t DM you');
+                }
 
                 coinCooldown.add(message.author.id);
-                setTimeout(() => { coinCooldown.delete(message.author.id); }, 1 * 1000);
+                setTimeout(() => { coinCooldown.delete(message.author.id); }, 3600000);
             }
         }
         catch (error) {

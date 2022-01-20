@@ -5,6 +5,6 @@ module.exports = {
     data: new SlashCommandBuilder().setName('ltgcheck')
     .setDescription('Get a quick check up'),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
-        // sex!
+        
     },
 };

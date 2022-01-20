@@ -23,7 +23,7 @@ module.exports = {
             });
 
             let discordToken = process.env.DISCORD_TOKEN;
-            if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
+            if (process.env.CURRENT_STATE == 'development') { discordToken = process.env.TESTING_DISCORD_TOKEN; }
 
             const rest = new REST({
                 version: '9',

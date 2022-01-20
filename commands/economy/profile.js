@@ -5,7 +5,7 @@ const profileModel = require('../../models/profileSchema.js');
 const statsModel = require('../../models/statsSchema.js');
 
 module.exports = {
-    name: 'ping',
+    name: 'profile',
     description: 'pings the server to see the delay between the client and the server',
     data: new SlashCommandBuilder().setName('profile')
     .setDescription('Replies with yours or someone elses profile')

@@ -14,7 +14,10 @@ module.exports = {
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
 
         const userMentioned = interaction.options.getMember('target'); // Gets the member mentioned in the slash commands
-        const amount = interaction.options.getInteger('amount'); // Gets the member mentioned in the slash commands
+        const amount = interaction.options.getInteger('amount'); // Gets the amount mentioned in the slash commands
+
+        if (amount <= 0) return interaction.reply({ content: 'At least give me a proper amount', ephemeral: true });
+        if (profileData.coins < amount) return interaction.reply({ content: 'BRUH YOU ARE FUCKING BROKE, GET SOME MORE MONEY', ephemeral: true });
 
         modifyPogcoin.addPogcoin(userMentioned.id, amount, true);
         modifyPogcoin.removePogcoin(interaction.user.id, amount, false);
@@ -38,6 +41,9 @@ module.exports = {
         });
 
         const donateEmbed = new MessageEmbed() // Create a new message embed
+        .addFields(
+            { name: 'Charitable people', value: `<@${interaction.user.id}> Just donated ${amount} pogcoin to <@${userMentioned.id}>` },
+        )
         .setFooter('Charity Replacement?')
         .setTimestamp();
 

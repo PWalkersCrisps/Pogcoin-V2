@@ -8,7 +8,7 @@ module.exports = {
     description: 'Gamble your life savings away',
     data: new SlashCommandBuilder().setName('slots')
     .setDescription('Gamble all of your life savings away')
-    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?')),
+    .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?').setRequired(true)),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
         const outcomeEmotes = [
             { weight: 5, emote: '<:pixel_despair:902537185713082388>', multiplyer: -2 }, // lose 2x the bet
@@ -25,11 +25,10 @@ module.exports = {
         const weights = outcomeEmotes.map(function(emote) {
             return emote.weight;
         });
-        const selectionIndex = weightedRandom(weights);
 
-        const outcome1 = outcomeEmotes[selectionIndex];
-        let outcome2 = outcomeEmotes[selectionIndex];
-        let outcome3 = outcomeEmotes[selectionIndex];
+        const outcome1 = outcomeEmotes[weightedRandom(weights)];
+        let outcome2 = outcomeEmotes[weightedRandom(weights)];
+        let outcome3 = outcomeEmotes[weightedRandom(weights)];
 
         if (Math.random() < 0.20) outcome2 = outcome1;
         if (Math.random() < 0.20) outcome3 = outcome2;
@@ -39,7 +38,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('Middle line only counts idiot')
         .addFields(
-            { name: 'Poggers slot machine', value: `${outcomeEmotes[selectionIndex].emote} ${outcomeEmotes[selectionIndex].emote} ${outcomeEmotes[selectionIndex].emote}\n${outcome1.emote} ${outcome2.emote} ${outcome3.emote}\n${outcomeEmotes[selectionIndex].emote} ${outcomeEmotes[selectionIndex].emote} ${outcomeEmotes[selectionIndex].emote}` },
+            { name: 'Poggers slot machine', value: `${outcomeEmotes[weightedRandom(weights)].emote} ${outcomeEmotes[weightedRandom(weights)].emote} ${outcomeEmotes[weightedRandom(weights)].emote}\n${outcome1.emote} ${outcome2.emote} ${outcome3.emote}\n${outcomeEmotes[weightedRandom(weights)].emote} ${outcomeEmotes[weightedRandom(weights)].emote} ${outcomeEmotes[weightedRandom(weights)].emote}` },
         );
         const pogCoinWinnings = new MessageEmbed() // Starts the proccess for creating an embed
         .setColor('#f924e5')
@@ -89,7 +88,7 @@ module.exports = {
             }
         }
         else {
-            modifyPogcoin.gamblePogcoin(amount, -1);
+            modifyPogcoin.gamblePogcoin(amount, -1, 1);
             pogCoinWinnings.addFields(
                 { name: 'Your winnings', value: `Damn you lost.\n\nBecause of that you have to give me ${amount * -1}` },
             );

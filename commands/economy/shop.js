@@ -48,7 +48,7 @@ module.exports = {
                     itemToBuy = interaction.options.getString('input');
                     validItem = items.find((val) => val.itemName.toLowerCase() === itemToBuy.toLowerCase());
                     itemPrice = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase()).itemPrice;
-                    roleGive = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase()).roleID;
+                    roleGive = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase()).modeItem;
 
                     if (!validItem) return interaction.reply('Actually try to buy a real item??');
 
@@ -71,7 +71,7 @@ module.exports = {
                     interaction.reply({ embeds: [shoplistEmbed] });
                 }
                 else {
-                    // sex!
+                    interaction.reply('Sorry, you can only use this command in https://www.discord.gg/pog');
                 }
         }
     },
