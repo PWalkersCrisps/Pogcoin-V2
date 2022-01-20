@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PWalkersCrisps/Pogcoin-V2.git"
+    "url": "git+https://github.com/PWalkersCrisps/RoyCoin.git"
   },
   "author": "PWalkersCrisps",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PWalkersCrisps/Pogcoin-V2/issues"
+    "url": "https://github.com/PWalkersCrisps/RoyCoin/issues"
   },
-  "homepage": "https://github.com/PWalkersCrisps/Pogcoin-V2#readme",
+  "homepage": "https://github.com/PWalkersCrisps/RoyCoin#readme",
   "engines": {
     "node": "^16.9.1"
   },

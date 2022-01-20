@@ -22,8 +22,8 @@ module.exports = {
                 type: activityType[1],
             });
 
-            const discordToken = process.env.DISCORD_TOKEN;
-            // if (!(process.env.CURRENT_STATE == 'production')) { discordToken = process.env.TESTING_DISCORD_TOKEN; }
+            let discordToken = process.env.DISCORD_TOKEN;
+            if (process.env.CURRENT_STATE == 'development') { discordToken = process.env.TESTING_DISCORD_TOKEN; }
 
             const rest = new REST({
                 version: '9',
@@ -31,12 +31,6 @@ module.exports = {
 
             console.log(`${ currentDate } Started refreshing application (/) commands.`);
 
-            await rest.put(
-                Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
-                { body: commands },
-            );
-
-            /*
             switch (process.env.CURRENT_STATE) {
                 case 'production':
                     await rest.put(
@@ -57,7 +51,7 @@ module.exports = {
                     );
                     break;
             }
-            */
+
             console.log(`${ currentDate } Successfully reloaded application (/) commands.`);
         }
         catch (error) {

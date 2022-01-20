@@ -14,9 +14,9 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const path = require('path');
 
+const { currentDate } = require('./modules/globalVariables');
 const profileModel = require('./models/profileSchema.js');
 const createProfile = require('./modules/profileCreate.js');
-const { currentDate } = require('./modules/globalVariables');
 
 /* Command/Event Handlers */
 client.commands = new Collection();
@@ -85,5 +85,8 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 /* Login */
-const discordToken = process.env.DISCORD_TOKEN;
+let discordToken = process.env.DISCORD_TOKEN;
+if (process.env.CURRENT_STATE == 'development') {
+    discordToken = process.env.TESTING_DISCORD_TOKEN;
+}
 client.login(discordToken);
