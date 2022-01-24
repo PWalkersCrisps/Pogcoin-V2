@@ -8,7 +8,7 @@ module.exports = {
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?').setRequired(true)),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
         const amount = interaction.options.getInteger('amount'); // Gets the amount mentioned in the slash commands
-        if (amount >= 0) return interaction.reply({ content: 'At least give me a proper amount', ephemeral: true });
+        if (amount <= 0) return interaction.reply({ content: 'At least give me a proper amount', ephemeral: true });
         if (profileData.coins <= 0) return interaction.reply({ content: 'BRUH YOU ARE FUCKING BROKE, GET SOME MORE MONEY', ephemeral: true });
 
         const embed = new MessageEmbed()
