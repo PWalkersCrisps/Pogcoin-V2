@@ -25,13 +25,13 @@ module.exports = {
                 addPogcoin(message.author.id, 1, true); // Adds 1 pogcoin to the user while also changing their stats
                 let genderRole;
                 if (message.member.roles.cache.some(role => role.name === 'He/Him')) { // checks if the auther has the he/him role
-                    genderRole = 'king';
+                    genderRole = 'boy';
                 }
                 else if (message.member.roles.cache.some(role => role.name === 'She/Her')) { // checks if the auther has the she/her role
-                    genderRole = 'queen';
+                    genderRole = 'girl';
                 }
                 else { // If the user has the they/them or dont have a gender role, it will always default to this
-                    genderRole = 'royalty';
+                    genderRole = 'child';
                 }
 
                 const pogcoinEarnt = new MessageEmbed()
@@ -42,10 +42,11 @@ module.exports = {
                 .setFooter('This is mininum wage noob');
 
                 try {
-                    message.author.send({ embeds: [pogcoinEarnt] });
+                    await message.react('<:pogcoin:940706284267798538>');
+                    await message.author.send({ embeds: [pogcoinEarnt] });
                 }
                 catch (error) {
-                    message.reply('You got a pogcoin, you have your DMs closed or you have blocked me so i can\'t DM you');
+                    console.log(error);
                 }
 
                 coinCooldown.add(message.author.id);
