@@ -21,7 +21,7 @@ module.exports = {
         .setFooter('Vegas Replacement?');
 
         const pogCoinWinnings = new MessageEmbed()
-        .setColor('#f00f0f')
+        .setColor('#ff00ff')
         .setTimestamp()
         .setFooter('The house mostly wins');
 
@@ -34,7 +34,7 @@ module.exports = {
         ];
 
         function returnPogcoinWinnings(value) {
-            return pogCoinWinnings.addFields(
+            pogCoinWinnings.addFields(
                 { name: '**Your winnings...**', value: value },
             );
         }
@@ -48,8 +48,8 @@ module.exports = {
         let outcome2 = outcomeEmotes[weightedRandom(weights)];
         let outcome3 = outcomeEmotes[weightedRandom(weights)];
 
-        if (Math.random() < 0.20) outcome2 = outcome1;
-        if (Math.random() < 0.20) outcome3 = outcome2;
+        if (Math.random() < 0.40) outcome2 = outcome1;
+        if (Math.random() < 0.40) outcome3 = outcome2;
 
         pogCoinSlots.addFields(
             {
@@ -63,7 +63,9 @@ module.exports = {
             switch (result) {
                 case '<:pixel_despair:902537185713082388>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
-                    returnPogcoinWinnings(`Oh god bruh wtf... you literally got the worst possible outcome, you lost 2x your bet amounting to ${amount * 2} pogcoins`);
+                    pogCoinWinnings.addFields(
+                        { name: '**Your winnings...**', value: `Oh god bruh wtf... you literally got the worst possible outcome, you lost 2x your bet amounting to ${amount * 2} pogcoins` },
+                    );
                     break;
                 case '<:pixel_bruh:902537185444642847>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
@@ -74,15 +76,21 @@ module.exports = {
                     break;
                 case '<:pixel_7:902537185713074207>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
-                    returnPogcoinWinnings(`Oooooo.... this is interesting, you actually won! These are your winnings: ${amount * 2} pogcoins  :D`);
+                    pogCoinWinnings.addFields(
+                        { name: '**Your winnings...**', value: `Oooooo.... this is interesting, you actually won! These are your winnings: ${amount * 2} pogcoins  :D` },
+                    );
                     break;
                 case '<:pixel_pepeBusiness:902537185364938825>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
-                    returnPogcoinWinnings(`This is bonkers, you got 3x of your original bet! You got ${amount * 3}`);
+                    pogCoinWinnings.addFields(
+                        { name: '**Your winnings...**', value: `This is bonkers, you got 3x of your original bet! You got ${amount * 3}` },
+                    );
                     break;
                 case '<:pixel_pogcoin:902537185637584926>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
-                    returnPogcoinWinnings(`HOLY SHIT YOU GOTTA BE KIDDING, YOU GOT 4x OF YOUR ORIGINAL BET HOLY SHIT, LITERALLY YOU HAVE ${amount * 4} MORE POGCOINS`);
+                    pogCoinWinnings.addFields(
+                        { name: '**Your winnings...**', value: `HOLY SHIT YOU GOTTA BE KIDDING, YOU GOT 4x OF YOUR ORIGINAL BET HOLY SHIT, LITERALLY YOU HAVE ${amount * 4} MORE POGCOINS` },
+                    );
                     break;
             }
         }
