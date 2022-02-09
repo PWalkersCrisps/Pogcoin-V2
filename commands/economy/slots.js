@@ -34,7 +34,7 @@ module.exports = {
         ];
 
         function returnPogcoinWinnings(value) {
-            pogCoinWinnings.addFields(
+            return pogCoinWinnings.addFields(
                 { name: '**Your winnings...**', value: value },
             );
         }
