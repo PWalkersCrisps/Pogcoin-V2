@@ -21,7 +21,7 @@ module.exports = {
         .setFooter('Vegas Replacement?');
 
         const pogCoinWinnings = new MessageEmbed()
-        .setColor('#ffff00')
+        .setColor('#f00f0f')
         .setTimestamp()
         .setFooter('The house mostly wins');
 
