@@ -58,9 +58,9 @@ module.exports = {
             },
         );
 
-        if (outcome1 === outcome2 && outcome1 == outcome3) {
+        if (outcome1 == outcome2 && outcome1 == outcome3) {
             const result = outcome1;
-            switch (result) {
+            switch (result.emote) {
                 case '<:pixel_despair:902537185713082388>':
                     modifyPogcoin.gamblePogcoin(interaction.user.id, amount, result.multiplyer);
                     pogCoinWinnings.addFields(
