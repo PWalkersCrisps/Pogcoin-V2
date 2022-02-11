@@ -86,4 +86,17 @@ new SlashCommandBuilder()
     new SlashCommandBuilder().setName('gamble')
     .setDescription('Lose ALL of your money!')
     .addIntegerOption(option => option.setName('amount').setDescription('How much do you want to gamble?').setRequired(true)),
+
+    new SlashCommandBuilder()
+    .setName('shop')
+    .setDescription('Check out what the shop is like')
+    .addSubcommand(subcommand =>
+		subcommand
+			.setName('list')
+			.setDescription('See what items are in the shop'))
+    .addSubcommand(subcommand =>
+        subcommand
+            .setName('buy')
+            .setDescription('Buy something from the shop'))
+            .addStringOption(option => option.setName('input').setDescription('Item you want to buy (Case insenstive)').setRequired(true)),
 ];
