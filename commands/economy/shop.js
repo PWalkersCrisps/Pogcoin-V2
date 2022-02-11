@@ -24,7 +24,7 @@ module.exports = {
         .setColor('#7de48b')
         .setTimestamp()
         .setFooter('Steam Shop Replacement?')
-        .setTitle('pog Shop');
+        .setTitle(`${interaction.guild.name}'s shop`);
 
         let itemToBuy;
         let validItem;
