@@ -19,20 +19,20 @@ module.exports = {
             if (Math.random() < 0.25) {
                 modifyPogcoin.gamblePogcoin(interaction.user.id, amount, 2);
                 embed.addFields(
-                    { name: '**You won!!**', value: `The casino has made a mistake and accidentially doubled your bet, you got ${amount * 2 * 2}` },
+                    { name: '**You won!!**', value: `The casino has made a mistake and accidentially doubled your bet, you got ${amount * 2 * 2} pogcoins` },
                 );
             }
             else {
                 modifyPogcoin.gamblePogcoin(interaction.user.id, amount, 1);
                 embed.addFields(
-                    { name: '**You won!!**', value: `Oh shit, you got ${amount * 2}` },
+                    { name: '**You won!!**', value: `Oh shit, you got ${amount * 2} pogcoins` },
                 );
             }
         }
         else {
             modifyPogcoin.gamblePogcoin(interaction.user.id, -amount, 1);
             embed.addFields(
-                { name: '*You lost...*', value: `Damn... you lost ${amount}` },
+                { name: '*You lost...*', value: `Damn... you lost ${amount} pogcoins` },
             );
         }
 
