@@ -80,8 +80,8 @@ new SlashCommandBuilder()
     .addSubcommand(subcommand =>
         subcommand
             .setName('buy')
-            .setDescription('Buy something from the shop'))
-            .addStringOption(option => option.setName('input').setDescription('Item you want to buy (Case insenstive)').setRequired(true))
+            .setDescription('Buy something from the shop')
+            .addStringOption(option => option.setName('input').setDescription('Item you want to buy (Case insenstive)').setRequired(true)))
     .addSubcommand(subcommand =>
 		subcommand
 			.setName('list')
