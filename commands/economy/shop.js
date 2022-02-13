@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const profileModel = require('../../models/profileSchema.js');
+const modifyPogcoin = require('../../modules/modifyPogcoin.js');
 const items = require('../../arrays/shopItems.js');
 const { GUILD_ID, TESTING_GUILD_ID } = require('../../arrays/config.json');
 
@@ -28,8 +29,10 @@ module.exports = {
 
         let itemToBuy;
         let validItem;
+        let itemName;
         let itemPrice;
-        let roleGive;
+        let itemMode;
+        let itemGive;
 
 
         switch (interaction.options.getSubcommand()) {
@@ -46,27 +49,34 @@ module.exports = {
             case 'buy':
                 if (interaction.guild.id == (GUILD_ID || TESTING_GUILD_ID)) {
                     itemToBuy = interaction.options.getString('input');
-                    validItem = items.find((val) => val.itemName.toLowerCase() === itemToBuy.toLowerCase());
-                    itemPrice = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase()).itemPrice;
-                    roleGive = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase()).modeItem;
+                    validItem = items.find((val) => (val.itemName.toLowerCase()) === itemToBuy.toLowerCase());
+                    itemName = validItem.itemName;
+                    itemPrice = validItem.itemPrice;
+                    itemMode = validItem.mode;
+                    itemGive = validItem.modeItem;
 
                     if (!validItem) return interaction.reply('Actually try to buy a real item??');
 
                     if (profileData.coins < itemPrice) return interaction.reply('Man... youre broke, get more more pogcoins');
 
-                    await profileModel.findOneAndUpdate({ // finds the profile of the author then updates it
-                        userID: interaction.user.id, // looks for the record of the message author's account
-                    }, {
-                        $inc: {
-                            coins: -itemPrice, // decreases the amount of coins that the author has by the stated amount
-                        },
-                    });
+                    switch (itemMode) {
+                        case 1:
+                            interaction.member.roles.add(interaction.guild.roles.cache.find(r => r.id === itemGive));
 
-                    interaction.member.roles.add(interaction.guild.roles.cache.find(r => r.id === roleGive));
+                            shoplistEmbed.addFields(
+                                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${interaction.guild.roles.cache.find(r => r.id === itemGive)}` },
+                            );
+                            if (itemName == 'Staff Furry Chat Role' || itemGive == '919982459230236722') modifyPogcoin.addPogcoin('259498722453356555', itemPrice * 0.1, false);
+                            break;
+                        case 2:
+                            await client.users.get('426455031571677197').send(`<@${interaction.member.id}> ${itemGive}`);
+                            shoplistEmbed.addFields(
+                                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${itemName}` },
+                            );
+                            break;
+                    }
 
-                    shoplistEmbed.addFields(
-                        { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${interaction.guild.roles.cache.find(r => r.id === roleGive)}` },
-                    );
+                    modifyPogcoin.removePogcoin(interaction.user.id);
 
                     interaction.reply({ embeds: [shoplistEmbed] });
                 }
