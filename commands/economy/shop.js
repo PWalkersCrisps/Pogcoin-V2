@@ -69,10 +69,10 @@ module.exports = {
                             if (itemName == 'Staff Furry Chat Role' || itemGive == '919982459230236722') modifyPogcoin.addPogcoin('259498722453356555', itemPrice * 0.1, false);
                             break;
                         case 2:
-                            await client.users.get('426455031571677197').send(`<@${interaction.member.id}> ${itemGive}`);
                             shoplistEmbed.addFields(
                                 { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${itemName}` },
                             );
+                            interaction.channel.send('Ayo <@426455031571677197>, someone brought this shit');
                             break;
                     }
 
