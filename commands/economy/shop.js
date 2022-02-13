@@ -66,22 +66,22 @@ module.exports = {
                             shoplistEmbed.addFields(
                                 { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${interaction.guild.roles.cache.find(r => r.id === itemGive)}` },
                             );
-                            if (itemName == 'Staff Furry Chat Role' || itemGive == '919982459230236722') modifyPogcoin.addPogcoin('259498722453356555', itemPrice * 0.1, false);
+                            if (itemName == 'Staff Furry Chat Role' || itemGive == '919982459230236722') { modifyPogcoin.addPogcoin('259498722453356555', itemPrice * 0.1, false); }
+                            await interaction.reply({ embeds: [shoplistEmbed] });
                             break;
                         case 2:
                             shoplistEmbed.addFields(
                                 { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${itemName}` },
                             );
-                            await interaction.channel.send('Ayo <@426455031571677197>, someone brought this shit');
+                            await interaction.reply({ embeds: [shoplistEmbed], content: 'Ayo <@426455031571677197>, someone brought this shit' });
                             break;
                     }
 
                     modifyPogcoin.removePogcoin(interaction.user.id);
 
-                    await interaction.reply({ embeds: [shoplistEmbed] });
                 }
                 else {
-                    interaction.reply('Sorry, you can only use this command in https://www.discord.gg/pog');
+                    interaction.reply('Sorry, you can only use this command in https://www.discord.gg/pog for now, complain to PWalkersCrisps about it');
                 }
         }
     },
