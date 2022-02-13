@@ -72,13 +72,13 @@ module.exports = {
                             shoplistEmbed.addFields(
                                 { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${itemName}` },
                             );
-                            interaction.channel.send('Ayo <@426455031571677197>, someone brought this shit');
+                            await interaction.channel.send('Ayo <@426455031571677197>, someone brought this shit');
                             break;
                     }
 
                     modifyPogcoin.removePogcoin(interaction.user.id);
 
-                    interaction.reply({ embeds: [shoplistEmbed] });
+                    await interaction.reply({ embeds: [shoplistEmbed] });
                 }
                 else {
                     interaction.reply('Sorry, you can only use this command in https://www.discord.gg/pog');
