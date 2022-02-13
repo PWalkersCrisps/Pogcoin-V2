@@ -49,19 +49,6 @@ new SlashCommandBuilder()
             .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
 
     new SlashCommandBuilder()
-    .setName('shop')
-    .setDescription('Check out what the shop is like')
-    .addSubcommand(subcommand =>
-        subcommand
-            .setName('buy')
-            .setDescription('Buy something from the shop')
-            .addStringOption(option => option.setName('input').setDescription('Item you want to buy (Case insenstive)').setRequired(true)))
-    .addSubcommand(subcommand =>
-        subcommand
-            .setName('list')
-            .setDescription('See what items are in the shop')),
-
-    new SlashCommandBuilder()
     .setName('profile')
     .setDescription('Replies with yours or someone elses profile')
     .addUserOption(option => option.setName('target').setDescription('Select a user')),
