@@ -46,7 +46,7 @@ module.exports = {
                     await message.author.send({ embeds: [pogcoinEarnt] });
                 }
                 catch (error) {
-                    console.log(error);
+                    console.log('Error in sending message to user, they might have blocked me');
                 }
 
                 coinCooldown.add(message.author.id);
