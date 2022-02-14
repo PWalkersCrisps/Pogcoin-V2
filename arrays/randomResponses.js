@@ -34,4 +34,10 @@ const randomGeneralName = [
     { weight: 5, channelName: 'amazingeral' },
 ];
 
-module.exports = { randomInsults, randomGeneralName };
+const ltgCheck = [
+    { weight: 1, image: 'https://cdn.discordapp.com/attachments/912973192384102430/942881241076744233/unknown.png' },
+    { weight: 3, image: 'https://cdn.discordapp.com/attachments/816008277619638332/905492943845093456/B927E6C3-934F-4D5D-83B6-63FC7534B741.jpg' },
+    { weight: 5, image: 'https://cdn.discordapp.com/attachments/816008277619638332/903245120399355924/image0-40.png' },
+];
+
+module.exports = { randomInsults, randomGeneralName, randomNickname, ltgCheck };
