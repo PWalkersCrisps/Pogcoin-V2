@@ -34,4 +34,4 @@ const randomGeneralName = [
     { weight: 5, channelName: 'amazingeral' },
 ];
 
-module.exports = { randomInsults };
+module.exports = { randomInsults, randomGeneralName };
