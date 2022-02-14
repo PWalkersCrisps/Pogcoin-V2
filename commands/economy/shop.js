@@ -1,7 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const profileModel = require('../../models/profileSchema.js');
 const modifyPogcoin = require('../../modules/modifyPogcoin.js');
 const items = require('../../arrays/shopItems.js');
+const { randomGeneralName } = require('../../arrays/randomResponses.js');
+const weightedRandom = require('weighted-random');
 const { GUILD_ID, TESTING_GUILD_ID } = require('../../arrays/config.json');
 
 module.exports = {
@@ -34,6 +35,11 @@ module.exports = {
         let itemMode;
         let itemGive;
 
+        const generalChannel = interaction.guild.channels.cache.get('903398509171060749');
+        const weights = randomGeneralName.map(function(emote) {
+            return randomGeneralName.weight;
+        });
+        let channelName;
 
         switch (interaction.options.getSubcommand()) {
             case 'list':
@@ -74,6 +80,14 @@ module.exports = {
                                 { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just got ${itemName}` },
                             );
                             await interaction.reply({ embeds: [shoplistEmbed], content: 'Ayo <@426455031571677197>, someone brought this shit' });
+                            break;
+                        case 3:
+                            channelName = randomGeneralName[weightedRandom(weights)];
+                            generalChannel.setName(channelName);
+                            shoplistEmbed.addFields(
+                                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just changed the name of general to ${channelName}` },
+                            );
+                            await interaction.reply({ embeds: [shoplistEmbed] });
                             break;
                     }
 

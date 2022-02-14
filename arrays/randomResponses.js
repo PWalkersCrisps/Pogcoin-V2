@@ -25,4 +25,13 @@ const randomNickname = [
     { weight: 1, nickname: 'I LOVE discord.gg/PBztGQQeMX' },
 ];
 
+const randomGeneralName = [
+    { weight: 1, channelName: 'the-fitness-gram-pacer-test-is-a-multi-stage-aerobic-capacity-testeral' },
+    { weight: 10, channelName: 'generally-a-bad-idea' },
+    { weight: 5, channelName: 'generalinator' },
+    { weight: 7, channelName: 'frogeral' },
+    { weight: 3, channelName: 'pisseral' },
+    { weight: 5, channelName: 'amazingeral' },
+];
+
 module.exports = { randomInsults };
