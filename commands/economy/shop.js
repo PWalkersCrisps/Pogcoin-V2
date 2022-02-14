@@ -36,8 +36,8 @@ module.exports = {
         let itemGive;
 
         const generalChannel = interaction.guild.channels.cache.get('903398509171060749');
-        const weights = randomGeneralName.map(function(emote) {
-            return randomGeneralName.weight;
+        const weights = randomGeneralName.map(function(generalName) {
+            return generalName.weight;
         });
         let channelName;
 
