@@ -91,7 +91,7 @@ module.exports = {
                             break;
                     }
 
-                    modifyPogcoin.removePogcoin(interaction.user.id);
+                    modifyPogcoin.removePogcoin(interaction.user.id, itemPrice, false);
 
                 }
                 else {
