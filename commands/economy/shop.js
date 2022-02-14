@@ -61,7 +61,7 @@ module.exports = {
                     itemMode = validItem.mode;
                     itemGive = validItem.modeItem;
 
-                    if (!validItem) return interaction.reply('Actually try to buy a real item??');
+                    if (!validItem.itemName) return interaction.reply('Actually try to buy a real item?? Try typing the whole name out...');
 
                     if (profileData.coins < itemPrice) return interaction.reply('Man... youre broke, get more more pogcoins');
 
