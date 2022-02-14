@@ -83,9 +83,9 @@ module.exports = {
                             break;
                         case 3:
                             channelName = randomGeneralName[weightedRandom(weights)];
-                            generalChannel.setName(channelName);
+                            generalChannel.setName(`${channelName.channelName}`);
                             shoplistEmbed.addFields(
-                                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just changed the name of general to ${channelName}` },
+                                { name: 'pogshop', value: `wowza, moneybags <@${interaction.user.id}> just changed the name of general to ${channelName.channelName}` },
                             );
                             await interaction.reply({ embeds: [shoplistEmbed] });
                             break;
