@@ -25,7 +25,6 @@ module.exports = {
                 await interaction.reply({ content: `User profile created for <@${userMentioned.id}>`, ephemeral: true });
                 break;
             case 'server':
-                if (!interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
                 newGuild = await client.guilds.create(`Pogcoin's server ${Date().toLocaleTimeString()}`, {
                     channels: [
                         { 'name': 'general' },
