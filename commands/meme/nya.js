@@ -10,24 +10,20 @@ module.exports = {
     .setDescription('UwU heheheha'),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
 
-        if (!nyaCooldown.has(interaction.guild.id)) {
+        if (nyaCooldown.has(interaction.guild.id)) return await interaction.reply({ content: '/nya is literally a server cooldown command', ephemeral: true });
 
-            const nya = nyaImage[Math.floor(Math.random() * nyaImage.length)];
+        const nya = nyaImage[Math.floor(Math.random() * nyaImage.length)];
 
-            modifyPogcoin.removePogcoin(nya.userID, 5, true);
+        modifyPogcoin.removePogcoin(nya.userID, 5, true);
 
-            const nyaEmbed = new MessageEmbed()
-            .setImage(nya.image)
-            .setColor(random.randomHexColour())
-            .setTitle('UwU Nya OwO');
+        const nyaEmbed = new MessageEmbed()
+        .setImage(nya.image)
+        .setColor(random.randomHexColour())
+        .setTitle('UwU Nya OwO');
 
-            await interaction.reply({ embeds: [nyaEmbed] });
+        await interaction.reply({ embeds: [nyaEmbed] });
 
-            nyaCooldown.add(interaction.guild.id);
-            setTimeout(() => { nyaCooldown.delete(interaction.guild.id); }, 300000);
-        }
-        else {
-            await interaction.reply({ content: '/nya is literally a server cooldown command', ephemeral: true });
-        }
+        nyaCooldown.add(interaction.guild.id);
+        setTimeout(() => { nyaCooldown.delete(interaction.guild.id); }, 300000);
     },
 };
