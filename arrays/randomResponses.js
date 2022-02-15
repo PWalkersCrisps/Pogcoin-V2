@@ -40,4 +40,8 @@ const ltgCheck = [
     { weight: 5, image: 'https://cdn.discordapp.com/attachments/816008277619638332/903245120399355924/image0-40.png' },
 ];
 
-module.exports = { randomInsults, randomGeneralName, randomNickname, ltgCheck };
+const nyaImage = [
+    { userID: '426455031571677197', image: 'https://cdn.discordapp.com/attachments/894357326184734761/943063011952824330/unknown.png' },
+];
+
+module.exports = { randomInsults, randomGeneralName, randomNickname, ltgCheck, nyaImage };
