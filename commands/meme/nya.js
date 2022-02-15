@@ -23,6 +23,6 @@ module.exports = {
 
         await interaction.reply({ embeds: [nyaEmbed] });
 
-        setTimeout(() => { nyaCooldown.delete(interaction.guild.id); }, 300);
+        setTimeout(() => { nyaCooldown.delete(interaction.guild.id); }, 300000);
     },
 };
