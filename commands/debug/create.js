@@ -16,7 +16,7 @@ module.exports = {
             .setName('server')
             .setDescription('Create a server just for shits and giggles')),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
-        if (!userPerms.includes(interaction.user.id) || interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
+        if (!userPerms.includes(interaction.user.id) || !interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
         let newGuild;
         const userMentioned = interaction.options.getMember('target');
         switch (interaction.options.getSubcommand()) {
@@ -25,6 +25,7 @@ module.exports = {
                 await interaction.reply({ content: `User profile created for <@${userMentioned.id}>`, ephemeral: true });
                 break;
             case 'server':
+                if (!interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
                 newGuild = await client.guilds.create(`Pogcoin's server ${Date().toLocaleTimeString()}`, {
                     channels: [
                         { 'name': 'general' },
