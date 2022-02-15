@@ -22,15 +22,16 @@ module.exports = {
         switch (interaction.options.getSubcommand()) {
             case 'profile':
                 profileCreate.createUserProfile(userMentioned.id); // Cteates a profile for the user that was mentioned
-                interaction.reply({ content: `User profile created for <@${userMentioned.id}>`, ephemeral: true });
+                await interaction.reply({ content: `User profile created for <@${userMentioned.id}>`, ephemeral: true });
                 break;
             case 'server':
                 if (!interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
-                newGuild = await client.guilds.create(`Pogcoin\'s server ${Date().toLocaleTimeString()}`, {
+                newGuild = await client.guilds.create(`Pogcoin's server ${Date().toLocaleTimeString()}`, {
                     channels: [
                         { 'name': 'general' },
                     ],
                 });
+                await interaction.reply({ content: 'Lol? you actually created a server' });
                 break;
         }
     },

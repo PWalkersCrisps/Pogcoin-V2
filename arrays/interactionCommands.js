@@ -23,30 +23,34 @@ module.exports = [
 		subcommand
 			.setName('profile')
 			.setDescription('Create a user profile in case of debugging')
-			.addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
+			.addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true)))
+    .addSubcommand(subcommand =>
+        subcommand
+            .setName('server')
+            .setDescription('Create a server just for shits and giggles')),
 
-new SlashCommandBuilder()
-    .setName('modify')
-    .setDescription('Creates something i guess')
-    .addSubcommand(subcommand =>
-		subcommand
-			.setName('give')
-			.setDescription('Give a user some coins')
-			.addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
-            .addIntegerOption(option => option.setName('int').setDescription('Enter an integer').setRequired(true))
-            .addBooleanOption(option => option.setName('choice').setDescription('Do you want this to modify their profile stats?').setRequired(true)))
-    .addSubcommand(subcommand =>
-        subcommand
-            .setName('remove')
-            .setDescription('remove some coins from a user')
-            .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
-            .addIntegerOption(option => option.setName('int').setDescription('Enter an integer').setRequired(true))
-            .addBooleanOption(option => option.setName('choice').setDescription('Do you want this to modify their profile stats?').setRequired(true)))
-    .addSubcommand(subcommand =>
-        subcommand
-            .setName('reset')
-            .setDescription('reset a user\'s coins as well as their stats')
-            .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
+    new SlashCommandBuilder()
+        .setName('modify')
+        .setDescription('Creates something i guess')
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('give')
+                .setDescription('Give a user some coins')
+                .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
+                .addIntegerOption(option => option.setName('int').setDescription('Enter an integer').setRequired(true))
+                .addBooleanOption(option => option.setName('choice').setDescription('Do you want this to modify their profile stats?').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('remove')
+                .setDescription('remove some coins from a user')
+                .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))
+                .addIntegerOption(option => option.setName('int').setDescription('Enter an integer').setRequired(true))
+                .addBooleanOption(option => option.setName('choice').setDescription('Do you want this to modify their profile stats?').setRequired(true)))
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('reset')
+                .setDescription('reset a user\'s coins as well as their stats')
+                .addUserOption(option => option.setName('target').setDescription('Select a user').setRequired(true))),
 
     new SlashCommandBuilder()
     .setName('profile')
