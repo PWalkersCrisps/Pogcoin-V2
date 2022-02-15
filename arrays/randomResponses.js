@@ -42,6 +42,7 @@ const ltgCheck = [
 
 const nyaImage = [
     { userID: '426455031571677197', image: 'https://cdn.discordapp.com/attachments/894357326184734761/943063011952824330/unknown.png' },
+    { userID: '891449299622314025', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943222676233809970/Screenshot_20220215-190908_Discord.jpg' },
 ];
 
 module.exports = { randomInsults, randomGeneralName, randomNickname, ltgCheck, nyaImage };
