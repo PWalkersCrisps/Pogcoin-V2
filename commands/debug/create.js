@@ -26,7 +26,7 @@ module.exports = {
                 break;
             case 'server':
                 if (!interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
-                newGuild = await client.guilds.create(`Pogcoin's server ${Date().toLocaleTimeString()}`, {
+                newGuild = await client.guilds.create('Pogcoin\'s server', {
                     channels: [
                         { 'name': 'general' },
                     ],
