@@ -45,6 +45,8 @@ const nyaImage = [
     { userID: '891449299622314025', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943222676233809970/Screenshot_20220215-190908_Discord.jpg' },
     { userID: '830285072379805707', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943239718655643718/unknown.png' },
     { userID: '801861000319729705', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943250061377277964/unknown.png' },
+    { userID: '891449299622314025', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943460545716191272/unknown.png' },
+    { userID: '433968975244820480', image: 'https://cdn.discordapp.com/attachments/903398509171060749/943464359353532416/unknown.png' },
 ];
 
 module.exports = { randomInsults, randomGeneralName, randomNickname, ltgCheck, nyaImage };
