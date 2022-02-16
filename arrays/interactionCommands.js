@@ -90,4 +90,8 @@ module.exports = [
 		subcommand
 			.setName('list')
 			.setDescription('See what items are in the shop')),
+
+    new SlashCommandBuilder().setName('echo')
+    .setDescription('Echo your message')
+    .addStringOption(option => option.setName('input').setDescription('Enter a string').setRequired(true)),
 ];
