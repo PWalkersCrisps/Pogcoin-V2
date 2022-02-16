@@ -14,7 +14,7 @@ module.exports = {
 
         const nya = nyaImage[Math.floor(Math.random() * nyaImage.length)];
 
-        modifyPogcoin.removePogcoin(nya.userID, 5, true);
+        modifyPogcoin.removePogcoin(nya.userID, 2, true);
 
         const nyaEmbed = new MessageEmbed()
         .setImage(nya.image)
