@@ -16,8 +16,9 @@ module.exports = {
             '510493459673645096',
             '632520343839309825',
             '301127339599986689',
+            '426455031571677197',
         ];
-        if (!userPerms.includes(interaction.user.id) || !interaction.user.id == '426455031571677197' || !mods.includes(interaction.user.id)) return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
+        if (!mods.includes(interaction.user.id)) return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
 
         const string = interaction.options.getString('input');
 
