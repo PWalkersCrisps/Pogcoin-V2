@@ -7,10 +7,21 @@ module.exports = {
     .setDescription('Echo your message')
     .addStringOption(option => option.setName('input').setDescription('Enter a string')),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
-        if (!userPerms.includes(interaction.user.id) || !interaction.user.id == '426455031571677197') return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
+        const mods = [
+            '625052755471630346',
+            '880171403977064528',
+            '322422240836583435',
+            '903404978373287976',
+            '490099410299125761',
+            '510493459673645096',
+            '632520343839309825',
+            '301127339599986689',
+        ];
+        if (!userPerms.includes(interaction.user.id) || !interaction.user.id == '426455031571677197' || !mods.includes(interaction.user.id)) return interaction.reply({ content: `<@${interaction.user.id}> actually have permissions to use the command next time`, ephemeral: true });
 
         const string = interaction.options.getString('input');
 
+        await interaction.reply({ content: 'Message sent to the idiots', ephemeral: true });
         await interaction.channel.send(`${string}`);
 
     },
