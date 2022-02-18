@@ -11,7 +11,7 @@ module.exports = {
 
         const cooldownData = await cooldownModel.findOne({ userID: interaction.user.id });
         if (parseInt(cooldownData.dailyTimestamp) + 86400000 <= Date.now()) return await interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
-        console.log(cooldownData.dailyTimestamp);
+        console.log(`${cooldownData.dailyTimestamp}, ${parseInt(cooldownData.dailyTimestamp)}`);
 
         const dailyAmount = 5;
 
