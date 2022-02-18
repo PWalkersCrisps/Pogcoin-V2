@@ -22,18 +22,18 @@ module.exports = {
 
         if (Math.random() > 0.1) {
             modifyPogcoin.addPogcoin(interaction.user.id, dailyAmount * 3, true);
-            pogcoinDaily.addfields(
+            pogcoinDaily.addFields(
                 { name: 'Tripled daily', value: `Thats bonkers, you got a tripled amount of pogcoins, you got ${dailyAmount * 3}` },
             );
         }
         else if (Math.random() > 0.75) {
             modifyPogcoin.addPogcoin(interaction.user.id, dailyAmount, true);
-            pogcoinDaily.addfields(
+            pogcoinDaily.addFields(
                 { name: 'Normal daily', value: `Thanks for coming again, take some money, you got ${dailyAmount}` },
             );
         }
         else {
-            pogcoinDaily.addfields(
+            pogcoinDaily.addFields(
                 { name: 'Nothing', value: 'You got nothing, sucks to be you lol.' },
             );
         }
