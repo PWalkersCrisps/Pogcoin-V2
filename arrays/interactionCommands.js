@@ -94,4 +94,8 @@ module.exports = [
     new SlashCommandBuilder().setName('echo')
     .setDescription('Echo your message')
     .addStringOption(option => option.setName('input').setDescription('Enter a string').setRequired(true)),
+
+    new SlashCommandBuilder()
+    .setName('daily')
+    .setDescription('random chance to get coin'),
 ];
