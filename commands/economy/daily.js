@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const cooldownModel = require('../../models/cooldownSchema.js');
 const modifyPogcoin = require('../../modules/modifyPogcoin');
 
 module.exports = {
@@ -7,6 +8,9 @@ module.exports = {
     .setName('daily')
     .setDescription('random chance to get coin'),
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
+
+        const cooldownData = await cooldownModel.findOne({ userID: interaction.user.id });
+        if (cooldownData.dailyTimestamp + 86400000 > Date.now()) return interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
 
         const dailyAmount = 15;
 
@@ -33,6 +37,16 @@ module.exports = {
                 { name: 'Nothing', value: 'You got nothing, sucks to be you lol.' },
             );
         }
+
+        await cooldownModel.findOneAndUpdate({
+            userID: interaction.user.id,
+        }, {
+            $set: {
+                dailyTimestamp: Date.now(),
+            },
+
+        });
+
         interaction.reply({ embed: [pogcoinDaily] });
     },
 };

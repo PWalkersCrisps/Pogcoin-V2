@@ -53,9 +53,7 @@ client.on('interactionCreate', async (interaction) => {
 
         if (!command) return;
 
-        let profileData = await profileModel.findOne({
-            userID: interaction.user.id,
-        }); // Gets the profile of the user who just sent a command
+        let profileData = await profileModel.findOne({ userID: interaction.user.id }); // Gets the profile of the user who just sent a command
         if (!profileData) { // If the profile data returns undefined it will attempt to create a profile for the user
             createProfile.createUserProfile(interaction.user.id, 1);
             profileData = await profileModel.findOne({ userID: interaction.user.id }); // The variable is defined again so that it can be parsed into commands
