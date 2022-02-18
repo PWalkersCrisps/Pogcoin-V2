@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
 
         const cooldownData = await cooldownModel.findOne({ userID: interaction.user.id });
-        if (cooldownData.dailyTimestamp + 86400000 > Date.now()) return await interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
+        if (cooldownData.dailyTimestamp + 86400000 < Date.now()) return await interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
 
         const dailyAmount = 15;
 
@@ -20,13 +20,13 @@ module.exports = {
         .setFooter('Advent calender?')
         .setTitle('Daily');
 
-        if (Math.random() > 0.1) {
+        if (Math.random() < 0.1) {
             modifyPogcoin.addPogcoin(interaction.user.id, dailyAmount * 3, true);
             pogcoinDaily.addFields(
                 { name: 'Tripled daily', value: `Thats bonkers, you got a tripled amount of pogcoins, you got ${dailyAmount * 3}` },
             );
         }
-        else if (Math.random() > 0.75) {
+        else if (Math.random() < 0.75) {
             modifyPogcoin.addPogcoin(interaction.user.id, dailyAmount, true);
             pogcoinDaily.addFields(
                 { name: 'Normal daily', value: `Thanks for coming again, take some money, you got ${dailyAmount}` },
