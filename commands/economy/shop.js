@@ -35,7 +35,7 @@ module.exports = {
         let itemMode;
         let itemGive;
 
-        const generalChannel = interaction.guild.channels.cache.get('903398509171060749');
+        const generalChannel = interaction.guild.channels.cache.get('925460562790477824');
         const weights = randomGeneralName.map(function(generalName) {
             return generalName.weight;
         });
