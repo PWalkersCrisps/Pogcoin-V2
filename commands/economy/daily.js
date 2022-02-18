@@ -10,7 +10,7 @@ module.exports = {
     async execute(client, interaction, MessageEmbed, MessageActionRow, MessageButton, profileData) {
 
         const cooldownData = await cooldownModel.findOne({ userID: interaction.user.id });
-        if (cooldownData.dailyTimestamp + 86400000 > Date.now()) return interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
+        if (cooldownData.dailyTimestamp + 86400000 > Date.now()) return await interaction.reply({ content: `<@${interaction.user.id}> please wait, its literally daily you can use the command, please wait ${cooldownData.dailyTimestamp + 86400000 - Date.now()}`, ephemeral: true });
 
         const dailyAmount = 15;
 
@@ -47,6 +47,6 @@ module.exports = {
 
         });
 
-        interaction.reply({ embed: [pogcoinDaily] });
+        await interaction.reply({ embeds: [pogcoinDaily] });
     },
 };
