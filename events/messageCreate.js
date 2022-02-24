@@ -42,7 +42,7 @@ module.exports = {
                 .setFooter('This is mininum wage noob');
 
                 try {
-                    await message.react('<:pogcoin:940706284267798538>');
+                    await message.react('<:pogcoin:946483860034695200>');
                     await message.author.send({ embeds: [pogcoinEarnt] });
                 }
                 catch (error) {
