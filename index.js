@@ -28,7 +28,7 @@ client.categories = fs.readdirSync(path.resolve('./commands'));
 /* Mongoose */
 let MongoSRV = process.env.MONGODB_SRV;
 let typeOfSRV = 'economy';
-if (!(process.env.CURRENT_STATE == ('production' || 'testing'))) {
+if (process.env.CURRENT_STATE == 'development') {
     MongoSRV = process.env.TESTING_SRV;
     typeOfSRV = 'testing';
 }

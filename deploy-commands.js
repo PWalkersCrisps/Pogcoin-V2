@@ -1,6 +1,6 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { CLIENT_ID, GUILD_ID } = require('./arrays/config.json');
+const { CLIENT_ID, TESTING_CLIENT_ID, GUILD_ID, TESTING_GUILD_ID } = require('./arrays/config.json');
 const fs = require('fs');
 
 const commands = require('./arrays/interactionCommands.js');
@@ -19,6 +19,14 @@ if (process.env.CURRENT_STATE == 'development') { discordToken = process.env.TES
 
 const rest = new REST({ version: '9' }).setToken(discordToken);
 
-rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
-	.catch(console.error);
+
+if (process.env.CURRENT_STATE == 'development') {
+	rest.put(Routes.applicationGuildCommands(TESTING_CLIENT_ID, TESTING_GUILD_ID), { body: commands })
+		.then(() => console.log('Successfully registered application commands.'))
+		.catch(console.error);
+}
+else {
+	rest.put(Routes.applicationGuildCommands(CLIENT_ID), { body: commands })
+		.then(() => console.log('Successfully registered application commands.'))
+		.catch(console.error);
+}
